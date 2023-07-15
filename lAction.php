@@ -12,18 +12,24 @@ if (isset($_POST['login'])) {
         echo "<script>location.href='adminHome.php'</script>";
     } else {
         // authCheck_query
-        $result = mysqli_query($conn, "SELECT * FROM `accounts` 
+        $result = mysqli_query($conn, "SELECT * FROM `regaccounts` 
             WHERE username = '$log_username' AND BINARY pass = '$log_password'");
         if (mysqli_num_rows($result) > 0) {
             session_start();
             $_SESSION['username'] = $log_username;
             echo "<script>location.href='home.php'</script>";
         } else {
-            echo "<script>alert('Invalid Username & Password')</script>";
-            echo "<script>location.href='index.php'</script>";
+            $result1 = mysqli_query($conn, "SELECT * FROM `accounts` 
+                WHERE username = '$log_username' AND BINARY pass = '$log_password'");
+            if (mysqli_num_rows($result1) > 0) {
+                echo "<script>alert('Account Has Not Been Registered. Please wait for an admin to register your account.')</script>";
+                echo "<script>location.href='index.php'</script>";
+            } else {
+                echo "<script>alert('Invalid Username & Password')</script>";
+                echo "<script>location.href='index.php'</script>";
+            }
         }
     }
-
 } else {
     echo "<script>alert('Not Accessible!')</script>";
     echo "<script>location.href='index.php'</script>";

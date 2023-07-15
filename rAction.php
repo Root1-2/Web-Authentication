@@ -52,6 +52,4 @@ if (isset($_POST['register'])) {
     echo "<script>location.href='index.php'</script>";
 }
 
-
-
 ?>
