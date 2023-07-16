@@ -62,9 +62,10 @@ if (!isset($_SESSION['username'])) {
                 <thead>
                     <tr>
                         <th scope="col" style="width: 10%;">ID</th>
-                        <th scope="col" style="width: 25%;">Username</th>
-                        <th scope="col" style="width: 20%;">Fullname</th>
+                        <th scope="col" style="width: 15%;">Username</th>
+                        <th scope="col" style="width: 15%;">Fullname</th>
                         <th scope="col" style="width: 20%;">Status</th>
+                        <th scope="col" style="width: 20%;">Approved Time</th>
                         <th scope="col" style="width: 20%;">Delete Account</th>
                     </tr>
                 </thead>
@@ -79,6 +80,7 @@ if (!isset($_SESSION['username'])) {
                             <td>" . $row['username'] . "</td>
                             <td>" . $row['fullname'] . "</td>
                             <td>Registered</td>
+                            <td>" . $row['approvedTime'] . "</td>
                             <td><button class='btn btn-outline-warning'>Delete</button></td>
                         </tr>";
                     }

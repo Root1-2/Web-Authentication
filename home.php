@@ -6,6 +6,7 @@ if (!isset($_SESSION['username'])) {
     echo "<script>alert('Not Accessible!')</script>";
     echo "<script>location.href='index.php'</script>";
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -20,8 +21,8 @@ if (!isset($_SESSION['username'])) {
 </head>
 
 <body>
-    <h1 class="text-center mb-5">Home</h1>
-    <h2 class="text-center mb-5">
+    <h1 class="text-center m-5">Home</h1>
+    <h2 class="text-success text-center mb-5">
         <?php echo $_SESSION['username']; ?>
     </h2>
 

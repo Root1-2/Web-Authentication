@@ -3,7 +3,6 @@
 $ID = $_GET['id'];
 if (isset($ID)) {
     include 'config.php';
-    $ID = $_GET['id'];
     $idselect = mysqli_query($conn, "SELECT * FROM `accounts` WHERE id = '$ID'");
     $row = mysqli_fetch_assoc($idselect);
 
@@ -12,8 +11,10 @@ if (isset($ID)) {
     // echo $row['username'];
     // echo $row['email'];
     // echo $row['pass'];
-    $insert_query = "INSERT INTO `regAccounts`(`fullname`,`username`,`email`,`pass`) VALUES
-         ('{$row['fullname']}','{$row['username']}','{$row['email']}','{$row['pass']}')";
+    date_default_timezone_set('Asia/Dhaka');
+    $approvedtime = date("d-F-Y h:i:s A");
+    $insert_query = "INSERT INTO `regAccounts`(`fullname`,`username`,`email`,`pass`,`approvedTime`) VALUES
+         ('{$row['fullname']}','{$row['username']}','{$row['email']}','{$row['pass']}', '$approvedtime')";
 
     if (!mysqli_query($conn, $insert_query)) {
         die("Not Inserted!!");
