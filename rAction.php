@@ -16,9 +16,9 @@ function sendemail($reg_fullName, $reg_email, $verify_token)
     $mail->isSMTP(); //Send using SMTP
     $mail->SMTPAuth = true; //Enable SMTP authentication
 
-    $mail->Host = 'smtp.gmail.com'; //Set the SMTP server to send through
-    $mail->Username = 'abdullahalmasrur8@gmail.com'; //SMTP username
-    $mail->Password = 'mlyysylpgltqmday'; //SMTP password
+    $mail->Host = 'smtp.example.com'; //Set the SMTP server to send through
+    $mail->Username = example8@gmail.com'; //SMTP username
+    $mail->Password = 'secret';  //SMTP passworddd
 
     $mail->SMTPSecure = 'ssl'; //Enable implicit TLS encryption
     $mail->Port = 465; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
