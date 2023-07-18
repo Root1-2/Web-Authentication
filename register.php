@@ -18,19 +18,19 @@
                 <form action="rAction.php" method="post">
                     <h3 class="bg-primary text-dark rounded p-2 text-center">Register Form</h3>
                     <div class="col-lg-8 m-4">
-                        <input type="text" class="form-control" name="r_fullname" placeholder="Fullname">
+                        <input type="text" class="form-control" name="r_fullname" placeholder="Fullname" required>
                     </div>
                     <div class="col-lg-8 m-4">
-                        <input type="text" class="form-control" name="r_username" placeholder="Username">
+                        <input type="text" class="form-control" name="r_username" placeholder="Username" required>
                     </div>
                     <div class="col-lg-8 m-4">
-                        <input type="email" class="form-control" name="r_email" placeholder="Email">
+                        <input type="email" class="form-control" name="r_email" placeholder="Email" required>
                     </div>
                     <div class="col-lg-8 m-4">
-                        <input type="password" class="form-control" name="r_password" placeholder="Password">
+                        <input type="password" class="form-control" name="r_password" placeholder="Password" required>
                     </div>
                     <div class="col-lg-8 m-4">
-                        <input type="password" class="form-control" name="r_conpassword" placeholder="Confirm Password">
+                        <input type="password" class="form-control" name="r_conpassword" placeholder="Confirm Password" required>
                     </div>
                     <button name="register" class="d-flex mx-auto m-2 btn btn-outline-success">Create</button>
 

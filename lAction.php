@@ -1,4 +1,5 @@
 <?php
+session_start();
 if (isset($_POST['login'])) {
 
     include 'config.php';
@@ -20,16 +21,22 @@ if (isset($_POST['login'])) {
             echo "<script>location.href='home.php'</script>";
         } else {
             $result1 = mysqli_query($conn, "SELECT * FROM `accounts` 
-                WHERE username = '$log_username' AND BINARY pass = '$log_password'");
+                WHERE username = '$log_username' AND BINARY pass = '$log_password' AND verifystatus = '0'");
             if (mysqli_num_rows($result1) > 0) {
-                echo "<script>alert('Account Has Not Been Registered. Please wait for an admin to register your account.')</script>";
+                $_SESSION['header'] = "Email Has Not Been Verified";
+                $_SESSION['para'] = "Verification link has been sent already!!";
                 echo "<script>location.href='index.php'</script>";
             } else {
-                echo "<script>alert('Invalid Username & Password')</script>";
-                echo "<script>location.href='index.php'</script>";
+                $result2 = mysqli_query($conn, "SELECT * FROM accounts WHERE username = '$log_username' AND BINARY pass = '$log_password'");
+                if (mysqli_num_rows($result2) > 0) {
+                    $_SESSION['header'] = "Account has not been Approved";
+                    $_SESSION['para'] = "Please Wait For An Admin to Approve your Account!!";
+                    echo "<script>location.href='index.php'</script>";
+                }
             }
         }
     }
+
 } else {
     echo "<script>alert('Not Accessible!')</script>";
     echo "<script>location.href='index.php'</script>";

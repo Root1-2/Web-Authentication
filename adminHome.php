@@ -20,7 +20,26 @@ if (!isset($_SESSION['username'])) {
 </head>
 
 <body>
-    <h1 class="text-center mb-5">Welcome To Admin Home,</h1>
+    <!-- <nav class="p-3 text-bg-dark navbar navbar-expand-md fixed-top">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
+                    <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
+                    <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
+                    <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+                    <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+                </ul>
+
+                <div class="text-end">
+                    <button type="button" class="btn btn-outline-light me-2">Login</button>
+                    <button type="button" class="btn btn-outline-success">Sign-up</button>
+                </div>
+            </div>
+        </div>
+    </nav> -->
+
+    <h1 class="text-center m-2 pt-5">Welcome To Admin Home,</h1>
     <h2 class="text-center text-info mb-5">
         <?php echo $_SESSION['username']; ?>
     </h2>
@@ -37,14 +56,14 @@ if (!isset($_SESSION['username'])) {
                         <th scope="col" style="width: 20%;">Approve Column</th>
                         <th scope="col" style="width: 20%;">Reject Column</th>
                     </tr>
-                </thead>            
+                </thead>
                 <tbody>
                     <?php include 'config.php';
 
-                    $unregistered = mysqli_query($conn, "SELECT * FROM `accounts`");
+                    $unregistered = mysqli_query($conn, "SELECT * FROM `accounts` WHERE verifystatus = '1'");
                     while ($row = mysqli_fetch_array($unregistered)) {
-                        echo 
-                        "<tr>
+                        echo
+                            "<tr>
                             <th scope='row'>" . $row['id'] . "</th>
                             <td>" . $row['username'] . "</td>
                             <td>Unregistered</td>
@@ -74,8 +93,8 @@ if (!isset($_SESSION['username'])) {
 
                     $unregistered = mysqli_query($conn, "SELECT * FROM `regAccounts`");
                     while ($row = mysqli_fetch_array($unregistered)) {
-                        echo 
-                        "<tr>
+                        echo
+                            "<tr>
                             <th scope='row'>" . $row['id'] . "</th>
                             <td>" . $row['username'] . "</td>
                             <td>" . $row['fullname'] . "</td>
@@ -89,9 +108,11 @@ if (!isset($_SESSION['username'])) {
             </table>
         </div>
     </div>
-
+    <br><br><br><br><br>
     <a href=" logout.php" style="text-decoration: none;"><button
             class="d-flex mx-auto btn btn-outline-danger">Logout</button></a>
+
+    <br><br><br><br><br><br><br><br><br><br>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"

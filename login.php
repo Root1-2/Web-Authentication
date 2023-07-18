@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
 
@@ -10,18 +14,40 @@
 </head>
 
 <body>
-    <h1 class="m-5 text-center">Log-In</h1>
+    <?php
+    if (isset($_SESSION['header'])) {
+        echo "
+        <div class='container-fluid'>
+            <div class='row justify-content-center'>
+                <div class='mt-5 col-lg-4 col-md-10 col-sm-12 p-0'>
+                    <div class='alert alert-success' role='alert'>
+                        <h4 class='alert-heading'>" . $_SESSION['header'] . "</h4>
+                        <hr>
+                        <p>" . $_SESSION['para'] . "</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        ";
+        unset($_SESSION['header']);
+    }
+
+    ?>
+
+    <!-- <h1 class="m-5 text-center">Log-In</h1> -->
+
+
 
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="border border-secondary rounded col-lg-4 col-md-10 col-sm-12 p-0">
+            <div class="border border-secondary rounded col-lg-4 col-md-10 col-sm-12 p-0 my-5">
                 <form action="lAction.php" method="post">
                     <h3 class="bg-primary text-dark rounded p-2 text-center">Login Form</h3>
                     <div class="col-lg-8 m-4">
-                        <input type="text" class="form-control" name="l_username" placeholder="Username">
+                        <input type="text" class="form-control" name="l_username" placeholder="Username" required>
                     </div>
                     <div class="col-lg-8 m-4">
-                        <input type="password" class="form-control" name="l_password" placeholder="Password">
+                        <input type="password" class="form-control" name="l_password" placeholder="Password" required>
                     </div>
                     <button name="login" class="d-flex mx-auto m-5 btn btn-outline-success">Submit</button>
                     <div class="m-4">
