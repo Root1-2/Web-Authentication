@@ -14,7 +14,7 @@ if (isset($_POST['login'])) {
     } else {
         // authCheck_query
         $result = mysqli_query($conn, "SELECT * FROM `regaccounts` 
-            WHERE username = '$log_username' AND BINARY pass = '$log_password'");
+            WHERE username = '$log_username' AND BINARY pass = '$log_password' AND verifystatus = '1'");
         if (mysqli_num_rows($result) > 0) {
             session_start();
             $_SESSION['username'] = $log_username;
