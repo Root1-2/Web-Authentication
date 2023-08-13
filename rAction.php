@@ -52,7 +52,7 @@ if (isset($_POST['register'])) {
     $verify_token = md5(rand());
 
     $userName_pattern = "/^(?=.*[a-z])(?=.*\d)[a-z\d!@#$%^&*_\-]{5,10}$/";
-    $email_pattern = "/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/";
+    $email_pattern = "/^[a-z0-9_.+-]+@(gmail\.com|yahoo\.com|hotmail\.com|outlook\.com|icloud\.com|zoho\.com|lus\.ac\.bd)$/";
     $pass_pattern = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,15}$/";
 
     $insert_query = "INSERT INTO `accounts`(`fullname`,`username`,`email`,`pass`,`verifyToken`) VALUES
